@@ -2,10 +2,9 @@
 
 {
   imports = [
-  	../wm/home_hypr.nix
-    #	../wm/waybar/waybar.nix
-  	../programs/neovim/neovim.nix
-    ../wm/polybar/polibar.nix
+  	../wm/hyprland/default.nix
+    ../wm/waybar/waybar.nix
+  	../applications/neovim/neovim.nix
   ];
   # home manager needs a bit of information about you and the paths it should
   # manage.
@@ -26,18 +25,6 @@
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    typescript
-    typescript-language-server
-    emmet-language-server
-    stylua
-    nil
-
-    rustup
-    python3
-    nodejs
-    gcc
-    zip
-    unzip
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

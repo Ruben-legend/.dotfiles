@@ -14,11 +14,21 @@
 		lib = nixpkgs.lib;
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
+    laptop = true;
+    monitors = {
+      pc = {
+        m1 = "DP-2";
+        m2 = "HDMI-A-1";
+      };
+    };
 	in {
 
 		nixosConfigurations = {
 			ruben-epic = lib.nixosSystem{
 				inherit system;
+      #  extraSpecialArgs = {
+      #       inherit laptop;
+      #  };
 				modules = [./user/configuration.nix];
 			};
 		};
@@ -26,6 +36,10 @@
 		homeConfigurations = {
 			ruben-epic = home-manager.lib.homeManagerConfiguration{
 				inherit pkgs;
+        extraSpecialArgs = {
+            inherit laptop;
+            inherit monitors;
+        };
 				modules = [./user/home.nix];
 			};
 		};
