@@ -14,12 +14,14 @@
 		lib = nixpkgs.lib;
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
-    laptop = false;
+    laptop = true;
     monitors = {
       pc = {
         m1 = "DP-2";
         m2 = "HDMI-A-1";
       };
+
+      laptop = "LVDS-1";
     };
 	in {
 

@@ -13,6 +13,7 @@
       sway
       hyprland
       pavucontrol
+      home-manager
       
   ];
 }

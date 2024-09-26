@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, laptop, monitors, ...}:
 let
   modules = "${./modules.json}";
 in
@@ -17,7 +17,7 @@ in
         spacing = 0;
         
         output = [
-          "DP-2"
+          (if laptop then "${monitors.laptop}" else "${monitors.pc.m1}")
         ];
         
         include = [

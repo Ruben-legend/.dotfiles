@@ -26,7 +26,7 @@
     stylua
     nil
 
-    rustup
+    cargo
     python3
     nodejs
     gcc
