@@ -1,4 +1,4 @@
-{...}:{
+{laptop, ...}:{
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -8,39 +8,53 @@
 
   security.rtkit.enable = true;
 
-  services.xserver.desktopManager.budgie.enable = true;
+  services =if laptop then 
+    #laptop config
+    {
+      openssh.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+      displayManager.sddm.enable = true;
+      desktopManager.plasma6.enable = true;
+      printing.enable = true;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+      xserver = {
+        enable = true;
+        xkb = {
+          layout = "us";
+          variant = "";
+        };
+      }; 
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-  # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+    }
 
-  services.xserver = {
-	  enable = true;
-	  displayManager = {
-	    lightdm = {
-	      #background = wall;
+    else
+    # pc config
+    {
+      openssh.enable = true;
+      printing.enable = true;
+
+      xserver = {
 	      enable = true;
-	    };
-  	};
-  };
-  
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+        desktopManager.budgie.enable = true;
+	      displayManager.lightdm.enable = true;
+      };
+
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };  
 }

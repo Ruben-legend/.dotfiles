@@ -1,4 +1,5 @@
-{pkgs, ...}:{
+{pkgs, laptop, ...}:
+{
 
   environment.systemPackages = with pkgs; [
       neovim
@@ -12,5 +13,6 @@
       sway
       hyprland
       pavucontrol
+      
   ];
 }

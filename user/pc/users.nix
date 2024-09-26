@@ -1,4 +1,4 @@
-{pkgs, ...}:{
+{pkgs, laptop, ...}:{
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ruben-epic = {
@@ -9,6 +9,7 @@
     #  thunderbird
        brave
        firefox
+       (if laptop then kdePackages.kate else null)
     ];
   };
 }
