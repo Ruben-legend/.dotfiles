@@ -8,14 +8,11 @@
 
   security.rtkit.enable = true;
 
-  services =if laptop then 
-    #laptop config
-    {
+  services = {
       openssh.enable = true;
+      printing.enable = true;
 
       displayManager.sddm.enable = true;
-      desktopManager.plasma6.enable = true;
-      printing.enable = true;
 
       xserver = {
         enable = true;
@@ -31,30 +28,5 @@
         alsa.support32Bit = true;
         pulse.enable = true;
       };
-    }
-
-    else
-    # pc config
-    {
-      openssh.enable = true;
-      printing.enable = true;
-
-      xserver = {
-	      enable = true;
-        desktopManager.budgie.enable = true;
-	      displayManager.lightdm.enable = true;
-      };
-
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };  
+    };
 }
