@@ -1,15 +1,7 @@
 { config, wayland, ...}:
 {
- imports = [ 
-    ./animations.nix
-    ./decoration.nix
-    ./workspace.nix
-    ./shorcuts.nix 
-    ./monitors.nix
-    ./general.nix
-    ./dwindle.nix
-    ./input.nix
-    ./env.nix
+  imports = [
+    ./configs/init.nix
   ];
  wayland.windowManager.hyprland = {
     enable = true;
@@ -36,7 +28,7 @@
 
       windowrulev2 = "suppressevent maximize, class:.*";
 
-      exec-once = ["nm-applet"];
+      exec-once = ["nm-applet" "${./scripts/animate-login}"];
     };
   };
 }

@@ -25,6 +25,11 @@
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
+      swaylock-effects
+      cmake
+      meson
+      cpio 
+      hyprpaper
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

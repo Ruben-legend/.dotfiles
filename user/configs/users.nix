@@ -9,7 +9,6 @@
     #  thunderbird
        brave
        firefox
-      (if laptop then kdePackages.kate else hello)
     ];
   };
 }

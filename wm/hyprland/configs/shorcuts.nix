@@ -3,7 +3,7 @@ let
   terminal = "kitty";
   mainMod = "SUPER";
   browser = "brave";
-  waybar_script = "${./scripts/start-waybar-s}";
+  waybar_script = "${../scripts/start-waybar-s}";
 in
 {
  wayland.windowManager.hyprland = {

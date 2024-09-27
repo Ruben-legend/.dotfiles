@@ -1,4 +1,4 @@
-{laptop, ...}:{
+{laptop, pkgs, ...}:{
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -12,7 +12,10 @@
       openssh.enable = true;
       printing.enable = true;
 
-      displayManager.sddm.enable = true;
+      displayManager.sddm = {
+        enable = true;
+        theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+      }; 
 
       xserver = {
         enable = true;
