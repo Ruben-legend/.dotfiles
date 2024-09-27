@@ -2,7 +2,6 @@
   imports = [ 
     ./animations.nix
     ./decoration.nix
-    ./wallpaper.nix
     ./workspace.nix
     ./shorcuts.nix 
     ./monitors.nix
