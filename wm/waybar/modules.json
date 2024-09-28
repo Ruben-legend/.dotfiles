@@ -21,7 +21,7 @@
       "default": ""
     },
     "persistent-workspaces": {
-      "DP-2": 5
+      "DP-2": [1, 2, 3, 4, 5]
     }
   },
 
@@ -161,9 +161,15 @@
 
   // Rofi Application Launcher
   "custom/appmenu": {
-    "format": "Apps",
+    "format": "",
     "on-click": "rofi -show drun -replace",
     "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
+    "tooltip": false
+  },
+
+  "custom/icon": {
+    "format": "",
+    "on-click": "kitty",
     "tooltip": false
   },
 

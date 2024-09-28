@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    ./styles.nix
+    ./styles/default.nix
   ];
   programs.waybar = {
     enable = true;
@@ -25,12 +25,13 @@ in
         ];
         
         modules-left = [
-        "custom/appmenu"
+          "custom/icon"
+          #"custom/appmenu"
          # "custom/settings"
          # "custom/waybarthemes"
          # "custom/wallpaper"
          # "group/quicklinks"
-          #"hyprland/window"
+          "hyprland/window"
           #"custom/starter"
         ];
 
@@ -51,7 +52,7 @@ in
           #"tray"
           #"custom/exit"
          # "custom/ml4w-welcome"
-          #"clock"
+          "clock"
         ];
       };
     };    

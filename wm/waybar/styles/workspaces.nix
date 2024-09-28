@@ -34,6 +34,14 @@
     transition: all 0.3s ease-in-out;
 }
 
+#workspaces button.empty {
+    background-color: white;
+}
+
+#workspaces button.visible {
+    background-color: white;
+}
+
 #workspaces button:hover {
     color: @textcolor1;
     background: @workspacesbackground2;

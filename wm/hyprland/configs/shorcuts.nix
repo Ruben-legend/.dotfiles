@@ -43,7 +43,6 @@ in
       "${mainMod}, 7, workspace, 7"
       "${mainMod}, 8, workspace, 8"
       "${mainMod}, 9, workspace, 9"
-      "${mainMod}, 10, workspace, 10"
 
 
       "${mainMod} SHIFT, 1, movetoworkspace, 1"
@@ -55,10 +54,9 @@ in
       "${mainMod} SHIFT, 7, movetoworkspace, 7"
       "${mainMod} SHIFT, 8, movetoworkspace, 8"
       "${mainMod} SHIFT, 9, movetoworkspace, 9"
-      "${mainMod} SHIFT, 10, movetoworkspace, 10"
  
-      "${mainMod}, S, togglespecialworkspace, magic"
-      "${mainMod} SHIFT, S, movetoworkspace, special:magic"
+      "${mainMod}, w, togglespecialworkspace, magic"
+      "${mainMod} SHIFT, w, movetoworkspace, special:magic"
 
       "${mainMod}, mouse_down, workspace, e+1"
       "${mainMod}, mouse_up, workspace, e-1"
