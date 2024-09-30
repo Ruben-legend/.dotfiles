@@ -43,7 +43,7 @@ in
           "custom/updates"
           #"pulseaudio"
           #"bluetooth"
-          (if laptop then"battery" else null)
+          (if laptop then"battery" else "")
           #"network"
           #"group/hardware"
           #"custom/cliphist"
