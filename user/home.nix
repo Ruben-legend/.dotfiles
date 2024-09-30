@@ -5,6 +5,7 @@
     ../wm/waybar/waybar.nix
   	../wm/hyprland/default.nix
   	../wm/hyprland/hypr-paper.nix
+  	../applications/kitty/kitty.nix
   	../applications/neovim/neovim.nix
   ];
   # home manager needs a bit of information about you and the paths it should
