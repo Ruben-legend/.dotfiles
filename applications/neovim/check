@@ -1,0 +1,13 @@
+function check(){
+  if ! [ -d "/home/$USER/.config/nvim" ] ; then 
+    mkdir /home/$USER/.config/nvim
+    check
+  fi
+
+  if ! [ -d "/home/$USER/.config/nvim/lua" ] ; then 
+    ln -s /home/$USER/.dotfiles/applications/neovim/lua/ ~/.config/nvim/
+    echo "Se creo el link simbolico"
+  fi
+}
+
+check

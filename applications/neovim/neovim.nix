@@ -1,4 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
+let 
+  check = "${./check}";
+in
 {
   programs.neovim = {
 	  enable = true;
@@ -8,12 +11,7 @@
 	  vimdiffAlias = true;
 	
 	  extraLuaConfig = "
-		  ${builtins.readFile ./lua/core/maps.lua}  
-		  ${builtins.readFile ./lua/core/base.lua}  
-		  ${builtins.readFile ./lua/core/highlights.lua}  
-		  ${builtins.readFile ./lua/core/linux.lua}  
-		  ${builtins.readFile ./lua/core/windows.lua}  
-		  ${builtins.readFile ./lua/core/lazy_vim.lua}  
+		  ${builtins.readFile ./lua/core/init.lua}  
 	  ";
   };
 
@@ -33,4 +31,8 @@
     zip
     unzip
   ];
+
+  home.activation.setupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${check}
+    '';
 }
