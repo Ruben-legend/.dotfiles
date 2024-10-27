@@ -1,1 +1,6 @@
-require("core")
+require("core.base")
+require("core.maps")
+require("core.linux")
+require("core.windows")
+require("core.lazy_vim")
+require("core.highlights")

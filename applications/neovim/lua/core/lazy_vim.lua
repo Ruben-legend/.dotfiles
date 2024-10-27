@@ -14,23 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ import = "user.plugins" },
 		{ import = "lazyvim.plugins.extras.lang.nix" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.vscode" },
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
 		{ import = "lazyvim.plugins.extras.formatting.prettier" },
-		{
-			"scottmckendry/cyberdream.nvim",
-			lazy = false,
-			priority = 1000,
-			opts = function()
-				require("cyberdream").setup({
-					transparent = true,
-				})
-				vim.cmd("colorscheme cyberdream")
-			end,
-		},
 	},
 })
 

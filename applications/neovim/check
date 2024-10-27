@@ -6,7 +6,7 @@ function check(){
 
   if ! [ -d "/home/$USER/.config/nvim/lua" ] ; then 
     ln -s /home/$USER/.dotfiles/applications/neovim/lua/ ~/.config/nvim/
-    echo "Se creo el link simbolico"
+    echo "Se creo el link simbolico de la carpeta lua"
   fi
 }
 

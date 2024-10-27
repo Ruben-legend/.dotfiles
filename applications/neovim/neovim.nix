@@ -11,7 +11,7 @@ in
 	  vimdiffAlias = true;
 	
 	  extraLuaConfig = "
-		  ${builtins.readFile ./lua/core/init.lua}  
+		  ${builtins.readFile ./init.lua}  
 	  ";
   };
 
