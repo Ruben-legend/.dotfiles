@@ -8,6 +8,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./configs/init.nix
+  	  ../applications/terminal/zsh.nix
     ];
 
 

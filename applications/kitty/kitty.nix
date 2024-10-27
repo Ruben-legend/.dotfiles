@@ -1,8 +1,9 @@
-{...}:{
+{ ... }:{
   programs.kitty = {
-    enable = true;
-    
+    enable = true;    
+
     extraConfig = "
+
       background_opacity 0.5
       
       map alt+n new_tab 

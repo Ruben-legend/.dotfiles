@@ -41,10 +41,10 @@ in
 
         modules-right = [
           "custom/updates"
-          #"pulseaudio"
+          "pulseaudio"
           #"bluetooth"
-          (if laptop then"battery" else "")
-          #"network"
+          (if laptop then "battery" else "")
+          (if laptop then "network" else "")
           #"group/hardware"
           #"custom/cliphist"
           #"custom/hypridle"
