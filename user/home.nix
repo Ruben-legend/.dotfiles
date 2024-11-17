@@ -5,8 +5,7 @@
     ../wm/waybar/waybar.nix
   	../wm/hyprland/default.nix
   	../wm/hyprland/hypr-paper.nix
-  	../applications/kitty/kitty.nix
-  	../applications/neovim/neovim.nix
+  	../applications/default.nix
   ];
   # home manager needs a bit of information about you and the paths it should
   # manage.
@@ -27,14 +26,32 @@
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
+      git
       swaylock-effects
       cmake
       meson
       cpio 
       hyprpaper
+      rofi
+      ncurses5
+
+      python3Packages.pyserial
+      python3.pkgs.pip
+
+      arduino-ide
+      vscode
+
       arduino-cli
+      platformio
   ];
 
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    #  platformio-core
+    # platformio
+    # teensy-loader-cli
+  ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -60,8 +77,15 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
   programs.lazygit.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }
+

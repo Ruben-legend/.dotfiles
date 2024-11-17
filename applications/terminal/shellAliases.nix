@@ -9,5 +9,6 @@
     ga    = "git add ";
     gc    = "git commit -m";
     gs    = "git status ";
+    apps  = "rofi -show drun";
   };
 }

@@ -1,0 +1,15 @@
+if ! [ -d "/home/$USER/.config/rofi/" ]; then
+  echo "ejecutando $@"
+
+  $@
+
+  cd rofi
+
+  chmod +x setup.sh
+
+  ./setup.sh
+  
+  cd ..
+
+  rm -rf rofi 
+fi

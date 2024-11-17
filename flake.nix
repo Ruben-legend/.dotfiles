@@ -11,10 +11,10 @@
 
 	outputs = {self, nixpkgs, home-manager,...} @ inputs: 
 	let
-		lib = nixpkgs.lib;
+    laptop = false;
 		system = "x86_64-linux";
+		lib = nixpkgs.lib;
 		pkgs = nixpkgs.legacyPackages.${system};
-    laptop = true;
     monitors = {
       pc = {
         m1 = "DP-2";
@@ -23,17 +23,18 @@
 
       laptop = "LVDS-1";
     };
+    
 	in {
 
 		nixosConfigurations = {
 			ruben-epic = lib.nixosSystem{
-				inherit system;
-        specialArgs = {
+				  inherit system;
+          specialArgs = {
             inherit laptop;
-        };
-				modules = [./user/configuration.nix];
-			};
-		};
+          };
+			  	modules = [./user/configuration.nix];
+			  };
+		  };
 
 		homeConfigurations = {
 			ruben-epic = home-manager.lib.homeManagerConfiguration{

@@ -32,7 +32,7 @@ in
     unzip
   ];
 
-  home.activation.setupScript = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.check_neovim_file_system = lib.hm.dag.entryAfter ["writeBoundary"] ''
     ${check}
     '';
 }

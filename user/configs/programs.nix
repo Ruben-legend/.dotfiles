@@ -4,6 +4,7 @@
   programs.waybar.enable = true; 
 
   programs.direnv.enable = true;
+  programs.thunar.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
