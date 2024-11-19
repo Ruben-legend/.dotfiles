@@ -1,4 +1,7 @@
 {...}:
+let
+  t = "${./templates}";
+in 
 {
   environment.shellAliases = {
     ".."  = "cd .."; 
@@ -10,5 +13,7 @@
     gc    = "git commit -m";
     gs    = "git status ";
     apps  = "rofi -show drun";
+
+    template = "${t}";
   };
 }
