@@ -1,5 +1,6 @@
 {pkgs, config, laptop, ...}:{
 
+  programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     users.ruben-epic = {
@@ -9,7 +10,8 @@
       packages = with pkgs; [
       #  thunderbird
         brave
-         firefox
+        firefox
+        discord
       ];
     };
     defaultUserShell = pkgs.zsh;

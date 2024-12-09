@@ -1,10 +1,8 @@
-{ config, ...}:{
-  imports =  [./shellAliases.nix];
-  
+{ config, ...}:{ 
   programs.zsh = {
     enable = true;
-    enableBashCompletion = true;
-    ohMyZsh = {
+    enableCompletion = true;
+    oh-my-zsh = {
       plugins = ["git" "python" "man" "z"];
       enable = true;
       theme = "xiong-chiamiov-plus";

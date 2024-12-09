@@ -1,6 +1,6 @@
 { assets, ...}:
 let
-  wall-1 = "${../../assets/image.jpg}";
+  wall-1 = "${../../../assets/image.jpg}";
   #wall-1 = "~/.config/hypr/assets/image.jpg";
 in
 {

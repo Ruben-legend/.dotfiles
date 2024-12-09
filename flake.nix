@@ -3,8 +3,10 @@
 	
 	inputs = {
 		nixpkgs.url = "nixpkgs/nixos-unstable";
-		home-manager.url = "github:nix-community/home-manager";
-		home-manager.inputs.nixpkgs.follows = "nixpkgs";
+		home-manager = {
+      url = "github:nix-community/home-manager";
+		  inputs.nixpkgs.follows = "nixpkgs";
+    };
 
 		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 	};
@@ -32,18 +34,19 @@
           specialArgs = {
             inherit laptop;
           };
-			  	modules = [./user/configuration.nix];
+			  	modules = [./nixosconfig/configuration.nix];
 			  };
 		  };
 
 		homeConfigurations = {
 			ruben-epic = home-manager.lib.homeManagerConfiguration{
 				inherit pkgs;
+
         extraSpecialArgs = {
             inherit laptop;
             inherit monitors;
         };
-				modules = [./user/home.nix];
+				modules = [./homemanagerconfig/home.nix];
 			};
 		};
     

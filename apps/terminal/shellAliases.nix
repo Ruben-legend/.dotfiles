@@ -1,9 +1,9 @@
 {...}:
 let
-  t = "${./templates}";
+  t = "${../scripts/templates}";
 in 
 {
-  environment.shellAliases = {
+  programs.zsh.shellAliases = {
     ".."  = "cd .."; 
     dot   = "cd ~/.dotfiles/";
     u     = "sudo nixos-rebuild switch --flake .";

@@ -2,11 +2,8 @@
 
 {
   imports = [
-    ../wm/waybar/waybar.nix
-  	../wm/hyprland/default.nix
-  	../wm/hyprland/hypr-paper.nix
-  	../applications/default.nix
-  	../applications/terminal/tmux.nix
+    ./wm/default.nix
+  	../apps/default.nix
   ];
 
   programs.lazygit.enable = true;
@@ -51,7 +48,6 @@
       steamcmd
       udiskie
       udisks2
-      discord
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -81,6 +77,7 @@
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
   };
 
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -88,7 +85,10 @@
     };
   };
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager = {
+    enable = true; 
+    #backupFileExtension = ".old"; # Cambia ".bak" por la extensión que prefieras
+  };
 
 }
 

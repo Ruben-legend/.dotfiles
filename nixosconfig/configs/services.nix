@@ -23,6 +23,7 @@
           layout = "us";
           variant = "";
         };
+        desktopManager.plasma5.enable = true;
       }; 
 
       pipewire = {

@@ -18,6 +18,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/ruben-epic/HardDrive" = {
+    device = "UUID=5C3C04663C043E10";
+    fsType = "ntfs";
+    options = ["defaults"];
+  };
 
   swapDevices = [ ];
 

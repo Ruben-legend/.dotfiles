@@ -2,6 +2,7 @@
 {
   imports = [
     ./configs/init.nix
+    ./hypr-paper.nix
   ];
  wayland.windowManager.hyprland = {
     enable = true;
