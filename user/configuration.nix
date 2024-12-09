@@ -6,11 +6,17 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
       ./configs/init.nix
+      ./hardware-configuration.nix
   	  ../applications/terminal/zsh.nix
+      ../applications/containers/default.nix
     ];
 
+  fileSystems."/home/ruben-epic/HardDrive" = {
+    device = "UUID=5C3C04663C043E10";
+    fsType = "ntfs";
+    options = ["defaults"];
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

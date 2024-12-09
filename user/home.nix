@@ -6,7 +6,10 @@
   	../wm/hyprland/default.nix
   	../wm/hyprland/hypr-paper.nix
   	../applications/default.nix
+  	../applications/terminal/tmux.nix
   ];
+
+  programs.lazygit.enable = true;
   # home manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ruben-epic";
@@ -43,15 +46,14 @@
 
       arduino-cli
       platformio
+      
+      protonup
+      steamcmd
+      udiskie
+      udisks2
+      discord
   ];
 
-  programs.nix-ld.enable = true;
-
-  programs.nix-ld.libraries = with pkgs; [
-    #  platformio-core
-    # platformio
-    # teensy-loader-cli
-  ];
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -76,14 +78,15 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
   };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
     };
   };
-  programs.lazygit.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 

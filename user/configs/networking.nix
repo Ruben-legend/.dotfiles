@@ -4,4 +4,5 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.allowedUDPPorts = [ 27015 ];
 }

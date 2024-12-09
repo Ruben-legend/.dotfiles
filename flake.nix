@@ -11,10 +11,10 @@
 
 	outputs = {self, nixpkgs, home-manager,...} @ inputs: 
 	let
-    laptop = false;
-		system = "x86_64-linux";
 		lib = nixpkgs.lib;
+		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
+    laptop = false;
     monitors = {
       pc = {
         m1 = "DP-2";

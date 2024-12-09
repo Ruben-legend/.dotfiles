@@ -10,6 +10,8 @@ return {
 			"stylua",
 			"shfmt",
 			"emmet-ls",
+			"asm-lsp",
+			"asmfmt",
 		},
 	},
 	---@param opts MasonSettings | {ensure_installed: string[]}

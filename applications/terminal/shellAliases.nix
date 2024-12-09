@@ -13,6 +13,7 @@ in
     gc    = "git commit -m";
     gs    = "git status ";
     apps  = "rofi -show drun";
+    mysql-container = "sudo nixos-container root-login mysql-container";
 
     template = "${t}";
   };

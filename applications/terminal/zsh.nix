@@ -7,8 +7,8 @@
     ohMyZsh = {
       plugins = ["git" "python" "man" "z"];
       enable = true;
-      #theme = "xiong-chiamiov-plus";
-      theme = "agnoster";
+      theme = "xiong-chiamiov-plus";
+      #theme = "agnoster";
     };
   };
 }

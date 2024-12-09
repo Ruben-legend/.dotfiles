@@ -5,7 +5,7 @@
     users.ruben-epic = {
       isNormalUser = true;
       description = "Ruben Alexander";
-      extraGroups = [ "networkmanager" "wheel" "dialout"];
+      extraGroups = [ "networkmanager" "wheel" "dialout" "docker" "kvm" "adbusers"];
       packages = with pkgs; [
       #  thunderbird
         brave
@@ -15,5 +15,7 @@
     defaultUserShell = pkgs.zsh;
   };
 
-  environment.sessionVariables.PATH = "$PATH:/home/ruben-epic/.cargo/bin/";
+  environment.sessionVariables = {
+    PATH = "/home/ruben-epic/.cargo/bin/:/home/ruben-epic/.local/bin/:$PATH";
+  };
 }

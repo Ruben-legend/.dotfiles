@@ -17,6 +17,7 @@
       hyprland
       pavucontrol
       home-manager
+      waydroid
       
   ];
 }
