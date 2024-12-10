@@ -1,6 +1,6 @@
 {...}:
 let
-  t = "${../scripts/templates}";
+  t = "${../../scripts/templates}";
 in 
 {
   programs.zsh.shellAliases = {

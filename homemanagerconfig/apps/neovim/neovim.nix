@@ -1,6 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 let 
-  check = "${./check}";
+  check = "${../../scripts/neovim_check.py}";
+  python = "${pkgs.python3}/bin/python3";
 in
 {
   programs.neovim = {
@@ -33,6 +34,6 @@ in
   ];
 
   home.activation.check_neovim_file_system = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    ${check}
+    ${python} ${check}
     '';
 }

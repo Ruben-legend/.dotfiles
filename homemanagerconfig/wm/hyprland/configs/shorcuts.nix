@@ -5,7 +5,7 @@ let
   browser = "brave";
   waybar_script = "${../scripts/start-waybar-s}";
   power = "${../scripts/power}";
-  rofi = "${../../../../apps/rofi/themes/launchers/type-2/launcher.sh}";
+  rofi = "${../../../apps/rofi/themes/launchers/type-2/launcher.sh}";
 in
 {
  wayland.windowManager.hyprland = {

@@ -11,5 +11,7 @@ else:
 if path.exists(home + "/.config/nvim/lua"):
     print("El capeta ya exixte")
 else:
-    system(f"ln -s {home}/.dotfile {home}/.config/nvim")
-
+    system(
+        f"ln -s {home}/.dotfiles/homemanagerconfig/apps/neovim/lua {home}/.config/nvim"
+    )
+    print("Se ha creado correctamente el link simbolico")

@@ -6,9 +6,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./apps/default.nix
       ./configs/default.nix
       ./hardware-configuration.nix
-      ../apps/containers/default.nix
     ];
 
 

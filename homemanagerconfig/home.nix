@@ -3,7 +3,7 @@
 {
   imports = [
     ./wm/default.nix
-  	../apps/default.nix
+  	./apps/default.nix
   ];
 
   programs.lazygit.enable = true;
