@@ -14,10 +14,9 @@ in
     bind = [
       "${mainMod}, Return, exec, ${terminal}"
       "${mainMod}, Q, killactive"
-      "${mainMod}, escape, exit"
+        #"${mainMod}, escape, exit"
       "${mainMod}, E, exec, thundar"
       "${mainMod}, V, togglefloating"
-      "${mainMod}, R, exec, rofi"
       "${mainMod}, P, pseudo"
       "${mainMod}, S, togglesplit"
       "${mainMod}, B, exec, ${browser}"
@@ -61,6 +60,12 @@ in
       "${mainMod} SHIFT, 8, movetoworkspace, 8"
       "${mainMod} SHIFT, 9, movetoworkspace, 9"
  
+      "${mainMod}, M, exec, obs-cmd audio mute Mic/Aux"
+      "${mainMod} SHIFT, M, exec, obs-cmd audio unmute Mic/Aux"
+
+      "${mainMod}, R, exec, obs-cmd recording start"
+      "${mainMod} SHIFT, R, exec, obs-cmd recording stop"
+
       "${mainMod}, w, togglespecialworkspace, magic"
       "${mainMod} SHIFT, w, movetoworkspace, special:magic"
 

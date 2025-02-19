@@ -8,6 +8,7 @@ in
     dot   = "cd ~/.dotfiles/";
     u     = "sudo nixos-rebuild switch --flake .";
     uh    = "home-manager switch --flake .";
+    uf    = "sudo nix flake update";
 
     ga    = "git add ";
     gc    = "git commit -m";

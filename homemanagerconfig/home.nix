@@ -34,8 +34,10 @@
       hyprpaper
       rofi
       ncurses5
+      geeqie
 
       python3Packages.pyserial
+      python3Packages.pydbus
       python3.pkgs.pip
 
       arduino-ide
@@ -43,13 +45,18 @@
 
       arduino-cli
       platformio
+      fzf
       
       protonup
       steamcmd
       udiskie
       udisks2
+      vlc
+      obs-cmd
+      phpPackages.composer
   ];
 
+  programs.obs-studio.enable = true;
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

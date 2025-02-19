@@ -1,7 +1,8 @@
 { pkgs, ... }:{
 
   fonts.packages = with pkgs; [ 
-     nerdfonts
+    nerd-fonts._0xproto
+    nerd-fonts.droid-sans-mono
      fira-sans
      font-awesome_6
      roboto

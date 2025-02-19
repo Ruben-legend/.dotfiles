@@ -10,7 +10,6 @@
       packages = with pkgs; [
       #  thunderbird
         brave
-        firefox
         discord
       ];
     };

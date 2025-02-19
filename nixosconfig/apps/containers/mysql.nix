@@ -2,7 +2,7 @@
   containers.mysql-container = let
     dataD = "/var/lib/mysql";    
   in {
-    autoStart = true;
+    autoStart = false;
     #privateNetwork = true;
     config = {config, pkgs, lib, ...}:{
 
