@@ -1,2 +1,0 @@
-lang=$1
-nix flake init --template "https://flakehub.com/f/the-nix-way/dev-templates/*#${lang}"

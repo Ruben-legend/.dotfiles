@@ -1,54 +1,42 @@
 {
-	description = "My first flake!";
-	
-	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
-		home-manager = {
-      url = "github:nix-community/home-manager";
-		  inputs.nixpkgs.follows = "nixpkgs";
+  description = "A very basic flake";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    flake-utils.url = "github:numtide/flake-utils";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    qtile-flake = {
+    	url = "github:qtile/qtile";
+	inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 
-		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-	};
-
-	outputs = {self, nixpkgs, home-manager,...} @ inputs: 
-	let
-		lib = nixpkgs.lib;
-		system = "x86_64-linux";
-		pkgs = nixpkgs.legacyPackages.${system};
-    laptop = false;
-    monitors = {
-      pc = {
-        m1 = "DP-2";
-        m2 = "HDMI-A-1";
-      };
-
-      laptop = "LVDS-1";
-    };
-    
-	in {
-
-		nixosConfigurations = {
-			ruben-epic = lib.nixosSystem{
-				  inherit system;
-          specialArgs = {
-            inherit laptop;
-          };
-			  	modules = [./nixosconfig/configuration.nix];
-			  };
-		  };
-
-		homeConfigurations = {
-			ruben-epic = home-manager.lib.homeManagerConfiguration{
-				inherit pkgs;
-
-        extraSpecialArgs = {
-            inherit laptop;
-            inherit monitors;
-        };
-				modules = [./homemanagerconfig/home.nix];
+  outputs = { self, nixpkgs, home-manager, flake-utils, qtile-flake, ...} @ inputs: 
+		let 
+			system = "x86_64-linux";
+			lib = nixpkgs.lib;
+			pkgs = nixpkgs.legacyPackages.${system};
+			qtile = (_: { nixpkgs.overlays = [qtile-flake.overlays.default]; });
+			scripts.dir = "${./scripts}";
+		in{
+			nixosConfigurations = {
+				ruben = lib.nixosSystem{
+					inherit system;
+					modules = [ 
+						qtile
+						./nixosConfig/configuration.nix 
+					];
+				};
 			};
+
+			homeConfigurations = {
+				ruben = home-manager.lib.homeManagerConfiguration {
+					inherit pkgs;
+					extraSpecialArgs = {inherit scripts;};
+					modules = [ ./homemanager/home.nix ];
+				};
+			};
+
 		};
-    
-	};
 }

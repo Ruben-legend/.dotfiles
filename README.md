@@ -1,1 +1,3 @@
-Hola este son los .dotfiles principales
+# test-virtual-nixos
+
+qtile config on .dotfiles

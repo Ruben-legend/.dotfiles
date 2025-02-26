@@ -1,6 +1,0 @@
-Name="$1"
-if [ "$Name" = "-r" ]; then
-  reboot
-else
-  shutdown now
-fi
