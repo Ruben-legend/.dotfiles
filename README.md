@@ -1,1 +1,1 @@
-l .dotfiles
+Hola este son los .dotfiles principales
