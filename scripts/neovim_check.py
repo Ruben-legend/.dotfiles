@@ -5,11 +5,8 @@ home = path.expanduser("~")
 neovim_path = home + "/.config/nvim"
 
 if path.exists(neovim_path):
-    print("El directorio ya exixte")
-else:
-    system(f"mkdir {neovim_path}")
- 
-if path.exists(neovim_path + "/lua"):
-    system("rm -rf {neovim_path}/lua");
-    print("Se ha borrado correctamente")
+    system(f"rm {neovim_path}")
+    print(f"Se ha borrado correctamente {neovim_path}")
 
+system(f"ln -s {home}/.dotfiles/homemanager/programs/neovim {neovim_path}")
+print(f"Se ha creado el link simbolico a {neovim_path}")

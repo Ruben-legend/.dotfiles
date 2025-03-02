@@ -54,7 +54,10 @@ for vt in range(1, 8):
 groups = [Group(i) for i in "123456789"]
 groups_icons = [""]
 
-for i in groups:
+for it, i in enumerate(groups):
+    if it == 9:
+        i.to_screen(1)
+
     keys.extend(
         [
             # mod + group number = switch to group
@@ -104,6 +107,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(top=bar),
+    Screen(),
 ]
 
 # Drag floating layouts.

@@ -1,13 +1,13 @@
-{ pkgs, lib, scripts, ...}:
+{ pkgs, lib, assets, ...}:
 let
 	python = "${pkgs.python3}/bin/python3";
-	s = "${scripts.dir}/qtile_check.py";
+	s = "${assets.scripts}/qtile_check.py";
 in
 {
 	imports = [ ./programs ./qtile];
 
-	home.username = "ruben";
-	home.homeDirectory = "/home/ruben";
+	home.username = "ruben-epic";
+	home.homeDirectory = "/home/ruben-epic";
 	
 	home.packages = with pkgs; [];
 

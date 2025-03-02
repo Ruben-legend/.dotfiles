@@ -2,7 +2,7 @@
 {
 	programs.kitty = {
 		enable = true;
-		extraConfig = " background_opacity 0.5";
+		extraConfig = "background_opacity 0.5";
 	};
 
 	programs.zsh = {

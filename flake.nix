@@ -18,11 +18,15 @@
 			lib = nixpkgs.lib;
 			pkgs = nixpkgs.legacyPackages.${system};
 			qtile = (_: { nixpkgs.overlays = [qtile-flake.overlays.default]; });
-			scripts.dir = "${./scripts}";
+			assets = { 
+        imgs = "${./assets}";
+        scripts = "${./scripts}";
+      };
 		in{
 			nixosConfigurations = {
-				ruben = lib.nixosSystem{
+				ruben-epic = lib.nixosSystem{
 					inherit system;
+          specialArgs = {inherit assets;};
 					modules = [ 
 						qtile
 						./nixosConfig/configuration.nix 
@@ -31,9 +35,9 @@
 			};
 
 			homeConfigurations = {
-				ruben = home-manager.lib.homeManagerConfiguration {
+				ruben-epic = home-manager.lib.homeManagerConfiguration {
 					inherit pkgs;
-					extraSpecialArgs = {inherit scripts;};
+					extraSpecialArgs = {inherit assets;};
 					modules = [ ./homemanager/home.nix ];
 				};
 			};

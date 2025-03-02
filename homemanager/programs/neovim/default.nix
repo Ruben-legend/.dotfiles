@@ -1,6 +1,6 @@
-{ pkgs, lib, scripts, ... }:
+{ pkgs, lib, assets, ... }:
 let 
-  check = "${../../../scripts/neovim_check.py}";
+  check = "${assets.scripts}/neovim_check.py";
   python = "${pkgs.python3}/bin/python3";
 in
 {
@@ -11,9 +11,9 @@ in
 	  vimAlias = true;
 	  vimdiffAlias = true;
 	
-	  extraLuaConfig = "
+	  extraLuaConfig = ''
 		  ${builtins.readFile ./init.lua}  
-	  ";
+	  '';
   };
 
   home.packages = with pkgs; [

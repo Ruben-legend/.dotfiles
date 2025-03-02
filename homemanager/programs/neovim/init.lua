@@ -1,6 +1,1 @@
-require("core.base")
-require("core.maps")
-require("core.linux")
-require("core.windows")
-require("core.lazy_vim")
-require("core.highlights")
+/nix/store/s8p5k83cdfz5rm475mv5wbsh115a74ld-home-manager-files/.config/nvim/init.lua

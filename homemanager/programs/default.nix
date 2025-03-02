@@ -1,3 +1,7 @@
 {...}:{
-	imports = [ ./terminal.nix ./tmux.nix ./neovim];
+	imports = [ 
+    ./terminal.nix 
+    ./tmux.nix 
+    ./neovim
+  ];
 }

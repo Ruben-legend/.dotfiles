@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, assets,... }:
 
 {
   imports =
@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "ruben"; # Define your hostname.
+  networking.hostName = "ruben-epic"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -46,52 +46,77 @@
   };
   
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stylua
+  ];
 
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enable = true; # Habilita Docker
+  virtualisation.docker.autoPrune.enable = true; # Limpia automáticamente recursos no utilizados
+
+  programs.direnv.enable = true;
+  programs.thunar.enable = true;
   # Configure keymap in X11
   services = {
+    displayManager.sddm = {
+          enable = true;
+          theme = "${import ./ssdm-theme.nix {inherit pkgs; inherit assets;}}";
+        };
   	xserver = {
 		enable = true;
-  		xkb = {
+  		
+      xkb = {
     			layout = "us";
     			variant = "";
-		};
-		windowManager.qtile = {
-			enable = true;
-		};
-  	};
+		  };
+		  
+      windowManager.qtile = {
+			  enable = true;
+		  };
+      
+      desktopManager = {
+        plasma5.enable = true;
+  	  };
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  users.users.ruben = {
+  users.users.ruben-epic = {
     isNormalUser = true;
-    description = "ruben";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Ruben Alexander";
+    extraGroups = [ "networkmanager" "wheel" "dialout" "docker" "kvm" "adbusers" ];
     packages = with pkgs; [];
   };
 
   fonts.packages = with pkgs; [
-    fantasque-sans-mono
+    #fantasque-sans-mono
   ];
 
   # Enable automatic login for the user.
-  services.getty.autologinUser = "ruben";
+  services.getty.autologinUser = "ruben-epic";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  
+  environment.sessionVariables = {
+    PATH = "/home/ruben-epic/.cargo/bin/:/home/ruben-epic/.local/bin/:$PATH";
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  neovim
-  tmux
-  kitty
-  firefox
-  git
-  ];
+    neovim
+    tmux
+    kitty
+    firefox
+    git
+    brave
+    pavucontrol
+    home-manager
+   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
