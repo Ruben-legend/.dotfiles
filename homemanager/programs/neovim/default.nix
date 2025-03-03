@@ -34,6 +34,7 @@ in
     zip
     unzip
     openssl
+    fzf
   ];
 
   home.activation.check_neovim_file_system = lib.hm.dag.entryAfter ["writeBoundary"] ''

@@ -102,6 +102,7 @@
   
   environment.sessionVariables = {
     PATH = "/home/ruben-epic/.cargo/bin/:/home/ruben-epic/.local/bin/:$PATH";
+    SCREEN="PC"; 
   };
   # List packages installed in system profile. To search, run:
   # $ nix search wget

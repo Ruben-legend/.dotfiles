@@ -25,18 +25,23 @@
 # SOFTWARE.
 
 import os
+import os.path as path
 import subprocess
 
 from bar1 import bar
 from keys import keys
 
-from libqtile import hook, layout, qtile
+from libqtile.widget.windowname import WindowName
+from libqtile import hook, layout, qtile, widget
+from libqtile import bar as b
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
 
 keys = keys
+
+dotfiles = path.expanduser("~" + "/.dotfiles")
 
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -51,13 +56,10 @@ for vt in range(1, 8):
         )
     )
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "123"]
 groups_icons = [""]
 
 for it, i in enumerate(groups):
-    if it == 9:
-        i.to_screen(1)
-
     keys.extend(
         [
             # mod + group number = switch to group
@@ -104,10 +106,25 @@ widget_defaults = dict(
 )
 
 extension_defaults = widget_defaults.copy()
-
 screens = [
-    Screen(top=bar),
-    Screen(),
+    Screen(
+        wallpaper=f"{dotfiles}/assets/img.jpg",
+        wallpaper_mode="fill",
+        bottom=bar,
+        x=0,
+        y=0,
+        width=1920,
+        height=1028,
+    ),
+    Screen(
+        wallpaper=f"{dotfiles}/assets/img.jpg",
+        wallpaper_mode="fill",
+        x=1920,
+        y=56,
+        width=1280,
+        height=1024,
+        top=b.Bar([WindowName()], 30),
+    ),
 ]
 
 # Drag floating layouts.
@@ -147,7 +164,7 @@ floating_layout = layout.Floating(
 
 auto_fullscreen = True
 focus_on_window_activation = "smart"
-reconfigure_screens = True
+reconfigure_screens = False
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
@@ -173,5 +190,11 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
-    script = os.path.expanduser("~/.config/qtile/screen.sh")
-    subprocess.run([script])
+    env = os.getenv("SCREEN", "PC")
+    env = "PC"
+    if env == "PC":
+        script = os.path.expanduser("~/.config/qtile/screen_pc.sh")
+        subprocess.run([script])
+    else:
+        script = os.path.expanduser("~/.config/qtile/screen.sh")
+        subprocess.run([script])
