@@ -19,7 +19,7 @@ in
 
       "${mainMod}, F1, exec, poweroff"
       "${mainMod}, F2, exec, systemctl restart"
-      "${mainMod}, F3, exec, systemctl suspend"
+      "${mainMod}, F5, exec, code"
  
       "${mainMod}, H, movefocus, l"
       "${mainMod}, L, movefocus, r"

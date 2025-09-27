@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, self, ... }:
 
 {
   imports =
@@ -48,7 +48,7 @@
   security.rtkit.enable = true;
 
   programs.hyprland.enable = true;
-
+  programs.zsh.enable = true;
 
   services = {
 	  dbus.enable = true;
@@ -56,7 +56,7 @@
     displayManager.sddm = {
 		  enable = true;
 		  wayland.enable = true;
-		  theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+		  theme = "${import ./modules/sddm-theme.nix {inherit pkgs; inherit self;}}";
 	  };
 
   	xserver = {
@@ -71,13 +71,15 @@
 
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.custom = {
-    isNormalUser = true;
-    description = "custom";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.custom = {
+      isNormalUser = true;
+      description = "custom";
+      extraGroups = [ "networkmanager" "wheel" ];
+      packages = with pkgs; [];
+    };
   };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

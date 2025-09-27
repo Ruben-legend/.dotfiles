@@ -10,21 +10,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:{
 
   	nixosConfigurations.custom = nixpkgs.lib.nixosSystem {
-		system = "x86_64-linux";
-		modules = [
-			./pc-config/nixosconfig/configuration.nix
-		];
-	};
+			system = "x86_64-linux";
 
-	homeConfigurations.custom = home-manager.lib.homeManagerConfiguration {
-		pkgs = nixpkgs.legacyPackages.x86_64-linux;
-		modules = [
-			./pc-config/homemanager/home.nix
-		];
-	};
-	
+			specialArgs = {inherit self;};
+			modules = [
+				./pc-config/nixosconfig/configuration.nix
+			];
+		};
+
+		homeConfigurations.custom = home-manager.lib.homeManagerConfiguration {
+			pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+			extraSpecialArgs = {inherit self;};
+			modules = [
+				./pc-config/homemanager/home.nix
+			];
+		};
+
   };
 }

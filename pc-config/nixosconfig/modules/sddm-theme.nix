@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, self }:
 
 let
-  imgLink = "${../../assets/image.jpg} ";
+  imgLink = "${self}/assets/image.jpg ";
 
   image = pkgs.fetchurl {
     url = imgLink;

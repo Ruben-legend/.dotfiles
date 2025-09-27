@@ -3,7 +3,7 @@
 {
 
   imports = [
-    ./wm
+    ./modules
   ];
 
   home.username = "custom";
@@ -17,6 +17,9 @@
     kitty
     vscode
     btop
+    brave
+
+    hyprpaper
   ];
 
   programs.git = {

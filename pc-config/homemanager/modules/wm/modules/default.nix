@@ -8,5 +8,6 @@
     ./env.nix
     ./general.nix
     ./input.nix
+    ./hyprpaper.nix
   ];
 }
