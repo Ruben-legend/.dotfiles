@@ -1,54 +1,30 @@
 {
-	description = "My first flake!";
-	
-	inputs = {
-		nixpkgs.url = "nixpkgs/nixos-unstable";
-		home-manager = {
-      url = "github:nix-community/home-manager";
-		  inputs.nixpkgs.follows = "nixpkgs";
+  description = "A very basic flake";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    home-manager = {
+	url = "github:nix-community/home-manager/release-25.05";
+    	inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 
-		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-	};
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
 
-	outputs = {self, nixpkgs, home-manager,...} @ inputs: 
-	let
-		lib = nixpkgs.lib;
+  	nixosConfigurations.custom = nixpkgs.lib.nixosSystem {
 		system = "x86_64-linux";
-		pkgs = nixpkgs.legacyPackages.${system};
-    laptop = false;
-    monitors = {
-      pc = {
-        m1 = "DP-2";
-        m2 = "HDMI-A-1";
-      };
-
-      laptop = "LVDS-1";
-    };
-    
-	in {
-
-		nixosConfigurations = {
-			ruben-epic = lib.nixosSystem{
-				  inherit system;
-          specialArgs = {
-            inherit laptop;
-          };
-			  	modules = [./nixosconfig/configuration.nix];
-			  };
-		  };
-
-		homeConfigurations = {
-			ruben-epic = home-manager.lib.homeManagerConfiguration{
-				inherit pkgs;
-
-        extraSpecialArgs = {
-            inherit laptop;
-            inherit monitors;
-        };
-				modules = [./homemanagerconfig/home.nix];
-			};
-		};
-    
+		modules = [
+			./pc-config/nixosconfig/configuration.nix
+		];
 	};
+
+	homeConfigurations.custom = home-manager.lib.homeManagerConfiguration {
+		pkgs = nixpkgs.legacyPackages.x86_64-linux;
+		modules = [
+			./pc-config/homemanager/home.nix
+		];
+	};
+	
+  };
 }
