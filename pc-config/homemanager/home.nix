@@ -22,6 +22,8 @@
     hyprpaper
   ];
 
+  programs.lazygit.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Ruben-legend";
