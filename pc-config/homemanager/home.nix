@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userName, ... } :
 
 {
 
@@ -6,8 +6,8 @@
     ./modules
   ];
 
-  home.username = "custom";
-  home.homeDirectory = "/home/custom";
+  home.username = "${userName}";
+  home.homeDirectory = "/home/${userName}";
 
   home.stateVersion = "25.05"; # Please read the comment before changing.
 

@@ -5,30 +5,32 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-	url = "github:nix-community/home-manager/release-25.05";
+		url = "github:nix-community/home-manager/release-25.05";
     	inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:{
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+	let 
+		userName = "custom";
+		system = "x86_64-linux";
+	in{
+  		nixosConfigurations."${userName}" = nixpkgs.lib.nixosSystem {
+			inherit system;
 
-  	nixosConfigurations.custom = nixpkgs.lib.nixosSystem {
-			system = "x86_64-linux";
-
-			specialArgs = {inherit self;};
+			specialArgs = {inherit self userName;};
 			modules = [
 				./pc-config/nixosconfig/configuration.nix
 			];
 		};
 
-		homeConfigurations.custom = home-manager.lib.homeManagerConfiguration {
-			pkgs = nixpkgs.legacyPackages.x86_64-linux;
+		homeConfigurations."${userName}" = home-manager.lib.homeManagerConfiguration {
+			pkgs = nixpkgs.legacyPackages."${system}";
 
-			extraSpecialArgs = {inherit self;};
+			extraSpecialArgs = {inherit self userName;};
 			modules = [
 				./pc-config/homemanager/home.nix
 			];
 		};
-
-  };
+  	};
 }

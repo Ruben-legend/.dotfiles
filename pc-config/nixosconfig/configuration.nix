@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, self, ... }:
+{ config, pkgs, self, userName, ... }:
 
 {
   imports =
@@ -16,7 +16,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "custom"; # Define your hostname.
+  networking.hostName = "${userName}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -63,7 +63,7 @@
   		enable = true;
   		xkb = {
     	 	layout = "us";
-   	 	variant = "";
+   	 	  variant = "";
   		};
 	  };
 
@@ -73,13 +73,14 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
-    users.custom = {
+    users."${userName}" = {
       isNormalUser = true;
       description = "custom";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];
     };
   };
+  
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
