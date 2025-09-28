@@ -1,9 +1,0 @@
-# Start with 0 opacity
-hyprctl dispatch opacity 0
-
-# Gradually increase the opacity to 100% over time
-for i in {0..100..10}; do
-  hyprctl dispatch opacity $((i/100))
-  sleep 0.1
-done
-
