@@ -1,6 +1,6 @@
 { assets, self, pkgs, ...}:
 let
-  wall = "${self}/assets/wallpapers/ttgl/ttgl1.jpg";
+  wall = "${self}/assets/wallpaper.jpg";
 
 in
 {
