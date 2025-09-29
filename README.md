@@ -1,1 +1,1 @@
-Hola este son los .dotfiles principales
+Change the userName on flake.nix and run ./install.sh
