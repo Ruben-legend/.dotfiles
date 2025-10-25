@@ -2,7 +2,7 @@
 
 echo "setting main configuration"
 
-sudo nixos-rebuild switch --flake ~/.dotfiles
+sudo nixos-rebuild switch --flake ~/.dotfiles#myticalruben
 
 echo "installig and setting up home-manager"
 
@@ -11,4 +11,4 @@ nix-channel --update
 
 nix-shell '<home-manager>' -A install
 
-home-manager switch --flake ~/.dotfiles
+home-manager switch --flake ~/.dotfiles#myticalruben

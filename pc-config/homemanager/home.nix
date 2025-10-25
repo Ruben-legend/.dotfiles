@@ -17,12 +17,13 @@
     kitty
     vscode
     btop
-    brave
+    firefox
 
     hyprpaper
   ];
 
   programs.lazygit.enable = true;
+  programs.lazydocker.enable = true;
 
   programs.git = {
     enable = true;
