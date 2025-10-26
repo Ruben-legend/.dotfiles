@@ -1,6 +1,6 @@
 {...}:{
   imports = [
-    ./wm
+    #./wm
     ./apps
   ];
 }

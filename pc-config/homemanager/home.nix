@@ -1,4 +1,9 @@
-{ config, pkgs, userName, ... } :
+{
+  config,
+  pkgs,
+  userName,
+  ...
+}:
 
 {
 
@@ -13,17 +18,25 @@
 
   home.packages = with pkgs; [
     fastfetch
-    git
     kitty
     vscode
     btop
     firefox
 
     hyprpaper
+    nixfmt-rfc-style
+
+    exercism
+
+    gh
+    git
+
+    docker
   ];
 
   programs.lazygit.enable = true;
   programs.lazydocker.enable = true;
+  programs.direnv.enable = true;
 
   programs.git = {
     enable = true;
@@ -47,11 +60,11 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  
+
   nixpkgs = {
-  	config = {
-		allowUnfree = true;
-	};
+    config = {
+      allowUnfree = true;
+    };
   };
 
   # Let Home Manager install and manage itself.
